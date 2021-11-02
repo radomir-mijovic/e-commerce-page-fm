@@ -2,16 +2,37 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import {BrowserRouter as Router} from "react-router-dom";
+import {ThemeProvider} from "styled-components";
+import {NavbarProvider} from "./Components/context/navbar_context";
+import {ProductsProvider} from "./Components/context/products_context";
+import {CartProvider} from "./Components/context/cart_context";
+import {GalleryProvider} from "./Components/context/gallery_context";
+
+const theme = {
+    mobile: '',
+    colors: {
+        grey: '#797C81'
+    }
+}
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <React.StrictMode>
+        <ThemeProvider theme={theme}>
+            <ProductsProvider>
+                <CartProvider>
+                    <GalleryProvider>
+                        <NavbarProvider>
+                            <Router>
+                                <App/>
+                            </Router>
+                        </NavbarProvider>
+                    </GalleryProvider>
+                </CartProvider>
+            </ProductsProvider>
+        </ThemeProvider>
+    </React.StrictMode>,
+    document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
