@@ -32,7 +32,7 @@ export const products_reducer = (state, action) => {
         return {
             ...state,
             filteredProducts: state.products.filter(
-                item => item.name.toLowerCase().includes(action.payload)
+                item => item.name.toLowerCase().includes(action.payload.toLowerCase())
             )
         }
     }

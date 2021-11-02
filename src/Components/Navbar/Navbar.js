@@ -5,7 +5,7 @@ import userPic from '../../assets/images/image-avatar.png'
 import logo from '../../assets/icons/logo.svg'
 import menuIcon from '../../assets/icons/icon-menu.svg'
 import {Container} from "../Container";
-import {NavLink} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import NavbarMobile from "./NavbarMobile";
 import {useNavbarContext} from "../context/navbar_context";
 import {useCartContext} from "../context/cart_context";
@@ -29,7 +29,9 @@ const Navbar = () => {
                 <NavbarWrapper>
                     <div className='links'>
                         <img src={menuIcon} onClick={sideMenuCartHandler} className='menu-icon' alt=""/>
-                        <img className='logo' src={logo} alt=""/>
+                        <Link to={'/'}>
+                            <img className='logo' src={logo} alt=""/>
+                        </Link>
                         <ul>
                             <li onClick={hideCart}>
                                 <NavLink activeClassName='active' to='/products'>
@@ -86,7 +88,7 @@ const NavbarWrapper = styled.nav`
     .menu-icon {
       display: none;
     }
-    
+
     .active {
       border-bottom: 3px solid hsl(26, 100%, 55%);
     }
@@ -103,11 +105,11 @@ const NavbarWrapper = styled.nav`
         cursor: pointer;
         border-bottom: 3px solid #ffff;
         transition: .5s;
-        
+
         &:hover {
           border-bottom: 3px solid hsl(26, 100%, 55%);
         }
-        
+
 
         & > a {
           text-decoration: none;
@@ -132,7 +134,7 @@ const NavbarWrapper = styled.nav`
     justify-content: space-between;
     width: 8rem;
     position: relative;
-    
+
     & > h3 {
       left: .6rem;
       top: .4rem;
@@ -154,7 +156,7 @@ const NavbarWrapper = styled.nav`
       border: 2px solid #ffff;
       border-radius: 3rem;
       transition: .5s;
-      
+
       &:hover {
         border: 2px solid hsl(26, 100%, 55%);
         border-radius: 3rem;
@@ -187,7 +189,7 @@ const NavbarWrapper = styled.nav`
 
     .right-side {
       width: 4.5rem;
-      
+
       & > h3 {
         top: 0;
       }
